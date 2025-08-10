@@ -48,4 +48,11 @@
       0 => 'Termwind\\Laravel\\TermwindServiceProvider',
     ),
   ),
+  'owen-it/laravel-auditing' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'OwenIt\\Auditing\\AuditingServiceProvider',
+    ),
+  ),
 );
