@@ -102,6 +102,63 @@
       'Vite' => 'Illuminate\\Support\\Facades\\Vite',
     ),
   ),
+  'audit' => 
+  array (
+    'enabled' => true,
+    'implementation' => 'OwenIt\\Auditing\\Models\\Audit',
+    'user' => 
+    array (
+      'morph_prefix' => 'user',
+      'guards' => 
+      array (
+        0 => 'web',
+        1 => 'api',
+      ),
+      'resolver' => 'OwenIt\\Auditing\\Resolvers\\UserResolver',
+    ),
+    'resolvers' => 
+    array (
+      'ip_address' => 'OwenIt\\Auditing\\Resolvers\\IpAddressResolver',
+      'user_agent' => 'OwenIt\\Auditing\\Resolvers\\UserAgentResolver',
+      'url' => 'OwenIt\\Auditing\\Resolvers\\UrlResolver',
+    ),
+    'events' => 
+    array (
+      0 => 'created',
+      1 => 'updated',
+      2 => 'deleted',
+      3 => 'restored',
+    ),
+    'strict' => false,
+    'exclude' => 
+    array (
+    ),
+    'empty_values' => true,
+    'allowed_empty_values' => 
+    array (
+      0 => 'retrieved',
+    ),
+    'allowed_array_values' => false,
+    'timestamps' => false,
+    'threshold' => 0,
+    'driver' => 'database',
+    'drivers' => 
+    array (
+      'database' => 
+      array (
+        'table' => 'audits',
+        'connection' => NULL,
+      ),
+    ),
+    'queue' => 
+    array (
+      'enable' => false,
+      'connection' => 'sync',
+      'queue' => 'default',
+      'delay' => 0,
+    ),
+    'console' => false,
+  ),
   'auth' => 
   array (
     'defaults' => 
