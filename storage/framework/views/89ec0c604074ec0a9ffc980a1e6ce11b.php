@@ -174,4 +174,4 @@
         </div>
     </body>
 </html>
-<?php /**PATH C:\ProjetosEstudos\urna-simulado\resources\views/welcome.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\ProjetosEstudos\urna-simulado\resources\views\welcome.blade.php ENDPATH**/ ?>
