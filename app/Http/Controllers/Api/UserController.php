@@ -16,6 +16,12 @@ class UserController extends Controller
         $this->service = $service;
     }
 
+    public function index(Request $request)
+    {
+        // return $this->service->getAll();
+        return User::get();
+    }
+
     public function getAllUsers(Request $request)
     {
         return $this->service->getAll();

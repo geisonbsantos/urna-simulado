@@ -89,26 +89,26 @@ class UserService implements UserInterface
     
     public function login(object $request): string
     {
-        $user = $this->repository->findWhereFirst('cpf', $request->cpf);
-
-        $registrationIsActive = $user->registrations('user_id', $user->id)->count();
+        $user = $this->repository->findWhereFirst('email', $request->email);
 
         if (isset($user->deleted_at) && $user->deleted_at != null) {
             throw new UserException('Usuário desativado!');
-        } 
-        if ($registrationIsActive < 1) {
-            throw new UserException('Usuário sem matrícula ativa!');
         }
 
         if (!$user || !Hash::check($request->password, $user->password)) {
             throw new CredentialsException($user);
         }
         $user->tokens()->delete();
-        $abilities = [];
-        foreach ($user->profile->abilities as  $ability) {
-            array_push($abilities, $ability->slug);
-        }
-        return $user->createToken('AccessToken', $abilities)->plainTextToken;
+        // $abilities = [];
+
+        // foreach ($user->profile->abilities as  $ability) {
+        //     array_push($abilities, $ability->slug);
+        // }
+
+        return $user->createToken(
+            'AccessToken', 
+            // $abilities
+            )->plainTextToken;
     }
 
     public function loggedInUser($request): UserResource
@@ -151,4 +151,19 @@ class UserService implements UserInterface
     {
         return $this->repository->listUsers($request->all());
     }
+
+    // public function validCredentials(object $request): UserUnityResource
+    // {
+    //     $user = $this->repository->findWhereFirst('cpf', $request->cpf);
+
+    //     if (!$user || !Hash::check($request->password, $user->password)) {
+    //         throw new CredentialsException($user);
+    //     }
+
+    //     if (isset($request->profile_id)) {
+    //         $this->repository
+    //             ->update($user, ['profile_id' => $request->profile_id, 'unity_id' => $request->unity_id, 'sector_id' => $request->sector_id]);
+    //     }
+    //     return new UserUnityResource($user);
+    // }
 }

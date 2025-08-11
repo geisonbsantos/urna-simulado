@@ -22,12 +22,12 @@ class AuthController extends Controller
 
     public function login(Request $request): JsonResponse
     {
-        $request->validated();
+        // $request->validated();
         $response = $this->service->login($request);
         return response()->json(['message' => 'Autenticado com sucesso!','token' => $response], 200);
     }
 
-    // public function validCredentials(ValidCredentialsFormRequest $request): JsonResponse
+    // public function validCredentials(Request $request): JsonResponse
     // {
     //     $user = $this->service->validCredentials($request);
     //     return response()->json(['message' => 'Credenciais válidas!','user' => $user], 200);

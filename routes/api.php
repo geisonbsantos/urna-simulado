@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
-})
-// ->middleware('auth:sanctum')
-;
+})->middleware('auth:sanctum');
+
+Route::get('/usuarios', function (Request $request) {
+    return $request->user()->get();
+})->middleware('auth:sanctum');
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('forget-password', [ForgotPasswordController::class, 'sendEmail']);
@@ -19,15 +21,22 @@ Route::post('valid-token', [ForgotPasswordController::class, 'validToken']);
 Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword']);
 
 Route::get('/get_users', [TesteController::class, 'getAllUsers']);
-Route::get('/list_users', [UserController::class, 'listUsers']);
+Route::get('/list_users_list', [UserController::class, 'listUsers']);
 
-Route::group(['middleware' => ['auth:sanctum', 'refreshTokenSanctum']], function () {
+Route::group(['middleware' => [
+    'auth:sanctum', 
+    // 'refreshTokenSanctum'
+    ]], function () {
     Route::get('/auth/me', [AuthController::class, 'me']);
     Route::post('/logout', [AuthController::class, 'logout']);
-
+    
     Route::prefix('users')->group(function () {
-        Route::get('/', [UserController::class, 'index'])->middleware(['abilities:list_usuario']);
-        // Route::get('/list_users', [UserController::class, 'listUsers'])->middleware(['abilities:list_usuario']);
+        Route::get('/', [UserController::class, 'index'])
+        // ->middleware(['abilities:list_usuario'])
+        ;
+        Route::get('/list_users', [UserController::class, 'listUsers'])
+        // ->middleware(['abilities:list_usuario'])
+        ;
         Route::get('/list_profile/{profile_id}', [UserController::class, 'listProfileId'])->middleware(['abilities:list_usuario']);
         Route::get('/list_unity_profile/{unity_id}/{profile_id}', [UserController::class, 'listUnityProfileId'])->middleware(['abilities:list_usuario']);
         Route::get('/{id}', [UserController::class, 'show'])->middleware(['abilities:list_usuario']);
