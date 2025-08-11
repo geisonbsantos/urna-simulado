@@ -2,19 +2,23 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ForgotPasswordController;
+use App\Http\Controllers\Api\TesteController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth:sanctum');
+})
+// ->middleware('auth:sanctum')
+;
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('forget-password', [ForgotPasswordController::class, 'sendEmail']);
 Route::post('valid-token', [ForgotPasswordController::class, 'validToken']);
 Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword']);
 
+Route::get('/get_users', [TesteController::class, 'getAllUsers']);
 Route::get('/list_users', [UserController::class, 'listUsers']);
 
 Route::group(['middleware' => ['auth:sanctum', 'refreshTokenSanctum']], function () {

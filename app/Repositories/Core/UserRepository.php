@@ -2,23 +2,12 @@
 
 namespace App\Repositories\Core;
 
-use App\Exceptions\BondException;
-use App\Exceptions\UserException;
-use App\Models\MyBosses;
 use App\Models\User;
-use App\Models\ProfileAbility;
-use App\Models\ProfileUserUnity;
-use App\Models\Registration;
-use App\Models\Sector;
-use App\Models\SectorRegistration;
-use App\Models\UserUnity;
 use App\Repositories\Core\BaseRepository;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
-
-use function PHPUnit\Framework\isEmpty;
 
 class UserRepository extends BaseRepository
 {
@@ -144,7 +133,7 @@ class UserRepository extends BaseRepository
         $per_page = isset($data['per_page']) ? $data['per_page'] :  10;
         $relationship =  $this->user
             // ->with($this->listUser)
-            ->select('id', 'name','email', 'profile_id', 'deleted_at');
+            ->select('id', 'name','email', 'deleted_at');
 
         foreach ($data as $item => $value) {
             if ($item == 'page' || $item == 'per_page') {
