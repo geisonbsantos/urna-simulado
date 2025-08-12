@@ -2,15 +2,14 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\Exceptions\CredentialsException;
-use Yajra\Pdo\Oci8\Exceptions\Oci8Exception;
 use Illuminate\Database\QueryException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
+use Yajra\Pdo\Oci8\Exceptions\Oci8Exception;
 
 class Handler extends ExceptionHandler
 {
@@ -52,9 +51,10 @@ class Handler extends ExceptionHandler
         $response = $this->handlerSpecialExceptions($exception);
 
         //Exceptions genéricas
-        if (!$response) {
+        if (! $response) {
             $response = $this->handlerGenericExceptions($exception);
         }
+
         return $response;
     }
 
@@ -65,25 +65,21 @@ class Handler extends ExceptionHandler
         }
 
         if ($e instanceof CredentialsException) {
-            return response()->json(['error' =>'Erro no login.', 'details' => 'Credenciais inválidas.'], 401);
+            return response()->json(['error' => 'Erro no login.', 'details' => 'Credenciais inválidas.'], 401);
         }
 
         if ($e instanceof CodeException) {
-            return response()->json(['error' =>'Código inválido.', 'details' => 'Erro na validação do código'], 422);
-        }
-
-        if ($e instanceof ModelNotFoundException) {
-            return response()->json(['error' =>'Recurso não encontrado.', 'details' => $e->getMessage()], 404);
+            return response()->json(['error' => 'Código inválido.', 'details' => 'Erro na validação do código'], 422);
         }
 
         if ($e instanceof UserException) {
-            return response()->json(['error' =>'Código inválido.', 'details' => $e->getMessage()], 422);
+            return response()->json(['error' => 'Código inválido.', 'details' => $e->getMessage()], 422);
         }
 
-        if ($e instanceof BondException) {
-            return response()->json(['error' =>'Important Profile.', 'details' => $e->getMessage()], 401);
+        if ($e instanceof ModelNotFoundException) {
+            return response()->json(['error' => 'Recurso não encontrado.', 'details' => $e->getMessage()], 404);
         }
-        
+
         if ($e instanceof ValidationException) {
             return $e->response;
         }
@@ -92,38 +88,34 @@ class Handler extends ExceptionHandler
             if (strpos($e->getMessage(), 'not-null') !== false) {
                 return response()->json(['error' => 'Todos os campos obrigatórios devem ser preenchidos.', 'details' => $e->getMessage()], 400);
             }
-            
+
             if (strpos($e->getMessage(), 'foreign key') !== false) {
                 return response()->json(['error' => 'Não foi possível remover o registro pois ele possui outros relacionamentos.', 'details' => $e->getMessage()], 400);
             }
-            
+
             if (strpos($e->getMessage(), 'Duplicate entry') !== false) {
                 return response()->json(['error' => 'Já existe um recurso com essas informações.', 'details' => $e->getMessage()], 400);
             }
-            
+
             if (strpos($e->getMessage(), 'restrição exclusiva') !== false) {
                 return response()->json(['error' => 'Já existe um recurso com essas informações.', 'details' => $e->getMessage()], 405);
-            }
-
-            else {
+            } else {
                 return response()->json(['error' => 'Exceção de consulta', 'details' => $e->getMessage()], 400);
             }
         }
-        
+
         if ($e instanceof Oci8Exception) {
             if (strpos($e->getMessage(), 'not-null') !== false) {
                 return response()->json(['error' => 'Todos os campos obrigatórios devem ser preenchidos.', 'details' => $e->getMessage()], 400);
             }
-            
+
             if (strpos($e->getMessage(), 'unique constraint') !== false) {
                 return response()->json(['error' => 'Já existe um recurso com essas informações.', 'details' => $e->getMessage()], 400);
             }
 
             if (strpos($e->getMessage(), 'restrição exclusiva') !== false) {
                 return response()->json(['error' => 'Já existe um recurso com essas informações.', 'details' => $e->getMessage()], 405);
-            }
-
-            else {
+            } else {
                 return response()->json(['error' => 'Exceção de Oci8', 'details' => $e->getMessage()], 400);
             }
         }
@@ -131,10 +123,10 @@ class Handler extends ExceptionHandler
 
     protected function handlerGenericExceptions(Throwable $e)
     {
-        if($e instanceof NotFoundHttpException) {
+        if ($e instanceof NotFoundHttpException) {
             return response()->json(['error' => 'Rota não encontrada!'], 404);
         }
-        if($e instanceof MethodNotAllowedHttpException) {
+        if ($e instanceof MethodNotAllowedHttpException) {
             return response()->json(['error' => 'Método não permitido!'], $e->getStatusCode());
         }
         if ($e instanceof \Exception) {

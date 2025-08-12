@@ -27,13 +27,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/api/user' => 
+      '/_ignition/health-check' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::f9YNcd1QqCMMBVCw',
+            '_route' => 'ignition.healthCheck',
           ),
           1 => NULL,
           2 => 
@@ -47,19 +47,37 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/api/usuarios' => 
+      '/_ignition/execute-solution' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::oDggCaX4swrNDuvk',
+            '_route' => 'ignition.executeSolution',
           ),
           1 => NULL,
           2 => 
           array (
-            'GET' => 0,
-            'HEAD' => 1,
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/_ignition/update-config' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'ignition.updateConfig',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
           ),
           3 => NULL,
           4 => false,
@@ -73,7 +91,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::P1yHwx7VmuGjuDyq',
+            '_route' => 'generated::EnAbx8AZqWAMMUzQ',
           ),
           1 => NULL,
           2 => 
@@ -92,7 +110,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::82X9f1LjZZBq3XoN',
+            '_route' => 'forget.password',
           ),
           1 => NULL,
           2 => 
@@ -111,7 +129,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::NrJfwJriWab7Psr0',
+            '_route' => 'valid.token',
           ),
           1 => NULL,
           2 => 
@@ -130,7 +148,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::GeuaEHZxBcudHrR4',
+            '_route' => 'reset.password',
           ),
           1 => NULL,
           2 => 
@@ -143,13 +161,32 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/api/get_users' => 
+      '/api/auth/logout' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::WTo1DgKgpfpkTete',
+            '_route' => 'logout',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/api/faqs' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'faqs',
           ),
           1 => NULL,
           2 => 
@@ -162,20 +199,16 @@ app('router')->setCompiledRoutes(
           5 => false,
           6 => NULL,
         ),
-      ),
-      '/api/list_users_list' => 
-      array (
-        0 => 
+        1 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::lR12w3FWCIZG9yqZ',
+            '_route' => 'generated::DTbTmh4ic4wZz5wQ',
           ),
           1 => NULL,
           2 => 
           array (
-            'GET' => 0,
-            'HEAD' => 1,
+            'POST' => 0,
           ),
           3 => NULL,
           4 => false,
@@ -189,7 +222,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::x4GoCx6oUuZHl5Hz',
+            '_route' => 'generated::TwThTr1TRyLjHglj',
           ),
           1 => NULL,
           2 => 
@@ -203,13 +236,85 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/api/logout' => 
+      '/api/report' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::T3FgRo9Saj53z95Z',
+            '_route' => 'generated::XrH1PoESUkOT4Iow',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/api/profiles' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'profiles.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'profiles.store',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/api/abilities' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::FIgHrKbrKRn9s4AX',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::pkqufVLWcGkyDH2u',
           ),
           1 => NULL,
           2 => 
@@ -228,7 +333,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::e0xZ3mYGh7GhK05x',
+            '_route' => 'generated::X3esS51UJMOCSw4R',
           ),
           1 => NULL,
           2 => 
@@ -245,52 +350,12 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::CZyixbGsn71PykjK',
+            '_route' => 'generated::IH9Ci1h8xAQ0RSxl',
           ),
           1 => NULL,
           2 => 
           array (
             'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/api/users/list_users' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'generated::KIbmPXRBY5swasNp',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/up' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'generated::3IMOLPFcfhQqiWEX',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
           ),
           3 => NULL,
           4 => false,
@@ -304,7 +369,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::evCi6NDEv7AArA17',
+            '_route' => 'generated::3NnwO0bAyJMl29bp',
           ),
           1 => NULL,
           2 => 
@@ -321,21 +386,22 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/api/users/(?|list_(?|profile/([^/]++)(*:45)|unity_profile/([^/]++)/([^/]++)(*:83))|([^/]++)(?|(*:102))|re(?|store/([^/]++)(*:130)|move/userUnity(?|/([^/]++)(*:164)|Profile/([^/]++)(*:188)))|link/userUnityProfile/([^/]++)(*:228)|get/userUnityProfile/([^/]++)(*:265))|/storage/(.*)(*:287))/?$}sDu',
+      0 => '{^(?|/captcha(?|/api(?:/([^/]++))?(*:36)|(?:/([^/]++))?(*:57))|/api/(?|profiles/([^/]++)(?|(*:93)|/abilities(?|(*:113))|(*:122)|(*:130))|abilities/([^/]++)(?|(*:160))|users/(?|([^/]++)(?|(*:189))|restore/([^/]++)(*:214))|faqs/([^/]++)(?|(*:239))))/?$}sDu',
     ),
     3 => 
     array (
-      45 => 
+      36 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::Wn63SMOhgCgVhjXH',
+            '_route' => 'generated::DvXxWGlFmhbZk0E7',
+            'config' => NULL,
           ),
           1 => 
           array (
-            0 => 'profile_id',
+            0 => 'config',
           ),
           2 => 
           array (
@@ -348,18 +414,18 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      83 => 
+      57 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::Y38s8ScZDSsP84PD',
+            '_route' => 'generated::gWrlbkvVf6bSwfmU',
+            'config' => NULL,
           ),
           1 => 
           array (
-            0 => 'unity_id',
-            1 => 'profile_id',
+            0 => 'config',
           ),
           2 => 
           array (
@@ -372,13 +438,122 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      102 => 
+      93 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::mJjYZRDIFLNj0nvI',
+            '_route' => 'profiles.show',
+          ),
+          1 => 
+          array (
+            0 => 'profile',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      113 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'profiles.abilities',
+          ),
+          1 => 
+          array (
+            0 => 'profile',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'profiles.abilities.store',
+          ),
+          1 => 
+          array (
+            0 => 'profile',
+          ),
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      122 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'profiles.update',
+          ),
+          1 => 
+          array (
+            0 => 'profile',
+          ),
+          2 => 
+          array (
+            'PUT' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      130 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'profiles.destroy',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'DELETE' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      160 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::s2kRNkj1L4leJc75',
           ),
           1 => 
           array (
@@ -398,7 +573,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::z4Xr6lRygq9ufQTJ',
+            '_route' => 'generated::qilq2O75HpGIKuRG',
           ),
           1 => 
           array (
@@ -406,7 +581,7 @@ app('router')->setCompiledRoutes(
           ),
           2 => 
           array (
-            'PATCH' => 0,
+            'PUT' => 0,
           ),
           3 => NULL,
           4 => false,
@@ -417,7 +592,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::fwFEjtYXRZd1SlyW',
+            '_route' => 'generated::vHpUdJExJa85eJhn',
           ),
           1 => 
           array (
@@ -433,13 +608,74 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      130 => 
+      189 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::OYVLuH1hFvmqSgVV',
+            '_route' => 'generated::HyPN3HAISYcovSid',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::zeVmAsWrthRPKwyR',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'PUT' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::goWfIPJMC5PURqyp',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'DELETE' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      214 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::SRb1xZDuBMo4japa',
           ),
           1 => 
           array (
@@ -455,106 +691,17 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      164 => 
+      239 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'users.removeLinkUserUnity',
+            '_route' => 'generated::T5Fq3bMhfDkjNwCE',
           ),
           1 => 
           array (
             0 => 'id',
-          ),
-          2 => 
-          array (
-            'DELETE' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-      ),
-      188 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'users.removeLinkUserUnityProfile',
-          ),
-          1 => 
-          array (
-            0 => 'id',
-          ),
-          2 => 
-          array (
-            'DELETE' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-      ),
-      228 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'users.linkUserUnityProfile',
-          ),
-          1 => 
-          array (
-            0 => 'id',
-          ),
-          2 => 
-          array (
-            'PATCH' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-      ),
-      265 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'users.getLinksUserUnityProfile',
-          ),
-          1 => 
-          array (
-            0 => 'id',
-          ),
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-      ),
-      287 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'storage.local',
-          ),
-          1 => 
-          array (
-            0 => 'path',
           ),
           2 => 
           array (
@@ -567,6 +714,44 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
         1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::dGLssBowjUf07iab',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'PUT' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::XlhOQ2BVi2TJi7d1',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'DELETE' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        3 => 
         array (
           0 => NULL,
           1 => NULL,
@@ -619,30 +804,23 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::f9YNcd1QqCMMBVCw' => 
+    'generated::DvXxWGlFmhbZk0E7' => 
     array (
       'methods' => 
       array (
         0 => 'GET',
         1 => 'HEAD',
       ),
-      'uri' => 'api/user',
+      'uri' => 'captcha/api/{config?}',
       'action' => 
       array (
+        'uses' => '\\Mews\\Captcha\\CaptchaController@getCaptchaApi',
+        'controller' => '\\Mews\\Captcha\\CaptchaController@getCaptchaApi',
         'middleware' => 
         array (
-          0 => 'api',
-          1 => 'auth:sanctum',
+          0 => 'web',
         ),
-        'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:77:"function (\\Illuminate\\Http\\Request $request) {
-    return $request->user();
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000051c0000000000000000";}}',
-        'namespace' => NULL,
-        'prefix' => 'api',
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::f9YNcd1QqCMMBVCw',
+        'as' => 'generated::DvXxWGlFmhbZk0E7',
       ),
       'fallback' => false,
       'defaults' => 
@@ -658,30 +836,23 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::oDggCaX4swrNDuvk' => 
+    'generated::gWrlbkvVf6bSwfmU' => 
     array (
       'methods' => 
       array (
         0 => 'GET',
         1 => 'HEAD',
       ),
-      'uri' => 'api/usuarios',
+      'uri' => 'captcha/{config?}',
       'action' => 
       array (
+        'uses' => '\\Mews\\Captcha\\CaptchaController@getCaptcha',
+        'controller' => '\\Mews\\Captcha\\CaptchaController@getCaptcha',
         'middleware' => 
         array (
-          0 => 'api',
-          1 => 'auth:sanctum',
+          0 => 'web',
         ),
-        'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:84:"function (\\Illuminate\\Http\\Request $request) {
-    return $request->user()->get();
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000051e0000000000000000";}}',
-        'namespace' => NULL,
-        'prefix' => 'api',
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::oDggCaX4swrNDuvk',
+        'as' => 'generated::gWrlbkvVf6bSwfmU',
       ),
       'fallback' => false,
       'defaults' => 
@@ -697,7 +868,116 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::P1yHwx7VmuGjuDyq' => 
+    'ignition.healthCheck' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => '_ignition/health-check',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'Spatie\\LaravelIgnition\\Http\\Middleware\\RunnableSolutionsEnabled',
+        ),
+        'uses' => 'Spatie\\LaravelIgnition\\Http\\Controllers\\HealthCheckController@__invoke',
+        'controller' => 'Spatie\\LaravelIgnition\\Http\\Controllers\\HealthCheckController',
+        'as' => 'ignition.healthCheck',
+        'namespace' => NULL,
+        'prefix' => '_ignition',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'ignition.executeSolution' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => '_ignition/execute-solution',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'Spatie\\LaravelIgnition\\Http\\Middleware\\RunnableSolutionsEnabled',
+        ),
+        'uses' => 'Spatie\\LaravelIgnition\\Http\\Controllers\\ExecuteSolutionController@__invoke',
+        'controller' => 'Spatie\\LaravelIgnition\\Http\\Controllers\\ExecuteSolutionController',
+        'as' => 'ignition.executeSolution',
+        'namespace' => NULL,
+        'prefix' => '_ignition',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'ignition.updateConfig' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => '_ignition/update-config',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'Spatie\\LaravelIgnition\\Http\\Middleware\\RunnableSolutionsEnabled',
+        ),
+        'uses' => 'Spatie\\LaravelIgnition\\Http\\Controllers\\UpdateConfigController@__invoke',
+        'controller' => 'Spatie\\LaravelIgnition\\Http\\Controllers\\UpdateConfigController',
+        'as' => 'ignition.updateConfig',
+        'namespace' => NULL,
+        'prefix' => '_ignition',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::EnAbx8AZqWAMMUzQ' => 
     array (
       'methods' => 
       array (
@@ -717,7 +997,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::P1yHwx7VmuGjuDyq',
+        'as' => 'generated::EnAbx8AZqWAMMUzQ',
       ),
       'fallback' => false,
       'defaults' => 
@@ -733,7 +1013,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::82X9f1LjZZBq3XoN' => 
+    'forget.password' => 
     array (
       'methods' => 
       array (
@@ -753,7 +1033,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::82X9f1LjZZBq3XoN',
+        'as' => 'forget.password',
       ),
       'fallback' => false,
       'defaults' => 
@@ -769,7 +1049,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::NrJfwJriWab7Psr0' => 
+    'valid.token' => 
     array (
       'methods' => 
       array (
@@ -789,7 +1069,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::NrJfwJriWab7Psr0',
+        'as' => 'valid.token',
       ),
       'fallback' => false,
       'defaults' => 
@@ -805,7 +1085,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::GeuaEHZxBcudHrR4' => 
+    'reset.password' => 
     array (
       'methods' => 
       array (
@@ -825,7 +1105,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::GeuaEHZxBcudHrR4',
+        'as' => 'reset.password',
       ),
       'fallback' => false,
       'defaults' => 
@@ -841,125 +1121,13 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::WTo1DgKgpfpkTete' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'api/get_users',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'api',
-        ),
-        'uses' => 'App\\Http\\Controllers\\Api\\TesteController@getAllUsers',
-        'controller' => 'App\\Http\\Controllers\\Api\\TesteController@getAllUsers',
-        'namespace' => NULL,
-        'prefix' => 'api',
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::WTo1DgKgpfpkTete',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'generated::lR12w3FWCIZG9yqZ' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'api/list_users_list',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'api',
-        ),
-        'uses' => 'App\\Http\\Controllers\\Api\\UserController@listUsers',
-        'controller' => 'App\\Http\\Controllers\\Api\\UserController@listUsers',
-        'namespace' => NULL,
-        'prefix' => 'api',
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::lR12w3FWCIZG9yqZ',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'generated::x4GoCx6oUuZHl5Hz' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'api/auth/me',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'api',
-          1 => 'auth:sanctum',
-        ),
-        'uses' => 'App\\Http\\Controllers\\Api\\AuthController@me',
-        'controller' => 'App\\Http\\Controllers\\Api\\AuthController@me',
-        'namespace' => NULL,
-        'prefix' => 'api',
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::x4GoCx6oUuZHl5Hz',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'generated::T3FgRo9Saj53z95Z' => 
+    'logout' => 
     array (
       'methods' => 
       array (
         0 => 'POST',
       ),
-      'uri' => 'api/logout',
+      'uri' => 'api/auth/logout',
       'action' => 
       array (
         'middleware' => 
@@ -974,7 +1142,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::T3FgRo9Saj53z95Z',
+        'as' => 'logout',
       ),
       'fallback' => false,
       'defaults' => 
@@ -990,7 +1158,593 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::e0xZ3mYGh7GhK05x' => 
+    'faqs' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/faqs',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\FaqController@index',
+        'controller' => 'App\\Http\\Controllers\\Api\\FaqController@index',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+        'as' => 'faqs',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::TwThTr1TRyLjHglj' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/auth/me',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+          1 => 'auth:sanctum',
+          2 => 'refreshTokenSanctum',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\AuthController@me',
+        'controller' => 'App\\Http\\Controllers\\Api\\AuthController@me',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::TwThTr1TRyLjHglj',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::XrH1PoESUkOT4Iow' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'api/report',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+          1 => 'auth:sanctum',
+          2 => 'refreshTokenSanctum',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\ReportErrorController@sendEmailReport',
+        'controller' => 'App\\Http\\Controllers\\Api\\ReportErrorController@sendEmailReport',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::XrH1PoESUkOT4Iow',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'profiles.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/profiles',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+          1 => 'auth:sanctum',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:list_perfil',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\ProfileController@index',
+        'controller' => 'App\\Http\\Controllers\\Api\\ProfileController@index',
+        'as' => 'profiles.index',
+        'namespace' => NULL,
+        'prefix' => 'api/profiles',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'profiles.show' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/profiles/{profile}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+          1 => 'auth:sanctum',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:list_perfil',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\ProfileController@show',
+        'controller' => 'App\\Http\\Controllers\\Api\\ProfileController@show',
+        'as' => 'profiles.show',
+        'namespace' => NULL,
+        'prefix' => 'api/profiles',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'profiles.abilities' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/profiles/{profile}/abilities',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+          1 => 'auth:sanctum',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:list_perfil',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\ProfileController@getAbilities',
+        'controller' => 'App\\Http\\Controllers\\Api\\ProfileController@getAbilities',
+        'as' => 'profiles.abilities',
+        'namespace' => NULL,
+        'prefix' => 'api/profiles',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'profiles.store' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'api/profiles',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+          1 => 'auth:sanctum',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:cad_perfil',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\ProfileController@beforeStore',
+        'controller' => 'App\\Http\\Controllers\\Api\\ProfileController@beforeStore',
+        'as' => 'profiles.store',
+        'namespace' => NULL,
+        'prefix' => 'api/profiles',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'profiles.abilities.store' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'api/profiles/{profile}/abilities',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+          1 => 'auth:sanctum',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:cad_perfil',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\ProfileController@storeAbilities',
+        'controller' => 'App\\Http\\Controllers\\Api\\ProfileController@storeAbilities',
+        'as' => 'profiles.abilities.store',
+        'namespace' => NULL,
+        'prefix' => 'api/profiles',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'profiles.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PUT',
+      ),
+      'uri' => 'api/profiles/{profile}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+          1 => 'auth:sanctum',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:cad_perfil',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\ProfileController@beforeUpdate',
+        'controller' => 'App\\Http\\Controllers\\Api\\ProfileController@beforeUpdate',
+        'as' => 'profiles.update',
+        'namespace' => NULL,
+        'prefix' => 'api/profiles',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'profiles.destroy' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => 'api/profiles/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+          1 => 'auth:sanctum',
+          2 => 'refreshTokenSanctum',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\ProfileController@destroy',
+        'controller' => 'App\\Http\\Controllers\\Api\\ProfileController@destroy',
+        'as' => 'profiles.destroy',
+        'namespace' => NULL,
+        'prefix' => 'api/profiles',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::FIgHrKbrKRn9s4AX' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/abilities',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+          1 => 'auth:sanctum',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:list_habilidade',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\AbilityController@index',
+        'controller' => 'App\\Http\\Controllers\\Api\\AbilityController@index',
+        'namespace' => NULL,
+        'prefix' => 'api/abilities',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::FIgHrKbrKRn9s4AX',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::s2kRNkj1L4leJc75' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/abilities/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+          1 => 'auth:sanctum',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:list_habilidade',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\AbilityController@show',
+        'controller' => 'App\\Http\\Controllers\\Api\\AbilityController@show',
+        'namespace' => NULL,
+        'prefix' => 'api/abilities',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::s2kRNkj1L4leJc75',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::pkqufVLWcGkyDH2u' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'api/abilities',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+          1 => 'auth:sanctum',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:cad_habilidade',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\AbilityController@beforeStore',
+        'controller' => 'App\\Http\\Controllers\\Api\\AbilityController@beforeStore',
+        'namespace' => NULL,
+        'prefix' => 'api/abilities',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::pkqufVLWcGkyDH2u',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::qilq2O75HpGIKuRG' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PUT',
+      ),
+      'uri' => 'api/abilities/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+          1 => 'auth:sanctum',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:cad_habilidade',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\AbilityController@beforeUpdate',
+        'controller' => 'App\\Http\\Controllers\\Api\\AbilityController@beforeUpdate',
+        'namespace' => NULL,
+        'prefix' => 'api/abilities',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::qilq2O75HpGIKuRG',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::vHpUdJExJa85eJhn' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => 'api/abilities/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+          1 => 'auth:sanctum',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:del_habilidade',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\AbilityController@destroy',
+        'controller' => 'App\\Http\\Controllers\\Api\\AbilityController@destroy',
+        'namespace' => NULL,
+        'prefix' => 'api/abilities',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::vHpUdJExJa85eJhn',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::X3esS51UJMOCSw4R' => 
     array (
       'methods' => 
       array (
@@ -1004,6 +1758,8 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'api',
           1 => 'auth:sanctum',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:list_usuario',
         ),
         'uses' => 'App\\Http\\Controllers\\Api\\UserController@index',
         'controller' => 'App\\Http\\Controllers\\Api\\UserController@index',
@@ -1012,7 +1768,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::e0xZ3mYGh7GhK05x',
+        'as' => 'generated::X3esS51UJMOCSw4R',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1028,123 +1784,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::KIbmPXRBY5swasNp' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'api/users/list_users',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'api',
-          1 => 'auth:sanctum',
-        ),
-        'uses' => 'App\\Http\\Controllers\\Api\\UserController@listUsers',
-        'controller' => 'App\\Http\\Controllers\\Api\\UserController@listUsers',
-        'namespace' => NULL,
-        'prefix' => 'api/users',
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::KIbmPXRBY5swasNp',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'generated::Wn63SMOhgCgVhjXH' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'api/users/list_profile/{profile_id}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'api',
-          1 => 'auth:sanctum',
-          2 => 'abilities:list_usuario',
-        ),
-        'uses' => 'App\\Http\\Controllers\\Api\\UserController@listProfileId',
-        'controller' => 'App\\Http\\Controllers\\Api\\UserController@listProfileId',
-        'namespace' => NULL,
-        'prefix' => 'api/users',
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::Wn63SMOhgCgVhjXH',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'generated::Y38s8ScZDSsP84PD' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'api/users/list_unity_profile/{unity_id}/{profile_id}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'api',
-          1 => 'auth:sanctum',
-          2 => 'abilities:list_usuario',
-        ),
-        'uses' => 'App\\Http\\Controllers\\Api\\UserController@listUnityProfileId',
-        'controller' => 'App\\Http\\Controllers\\Api\\UserController@listUnityProfileId',
-        'namespace' => NULL,
-        'prefix' => 'api/users',
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::Y38s8ScZDSsP84PD',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'generated::mJjYZRDIFLNj0nvI' => 
+    'generated::HyPN3HAISYcovSid' => 
     array (
       'methods' => 
       array (
@@ -1158,7 +1798,8 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'api',
           1 => 'auth:sanctum',
-          2 => 'abilities:list_usuario',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:list_usuario',
         ),
         'uses' => 'App\\Http\\Controllers\\Api\\UserController@show',
         'controller' => 'App\\Http\\Controllers\\Api\\UserController@show',
@@ -1167,7 +1808,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::mJjYZRDIFLNj0nvI',
+        'as' => 'generated::HyPN3HAISYcovSid',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1183,7 +1824,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::CZyixbGsn71PykjK' => 
+    'generated::IH9Ci1h8xAQ0RSxl' => 
     array (
       'methods' => 
       array (
@@ -1196,7 +1837,8 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'api',
           1 => 'auth:sanctum',
-          2 => 'abilities:cad_usuario',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:cad_usuario',
         ),
         'uses' => 'App\\Http\\Controllers\\Api\\UserController@beforeStore',
         'controller' => 'App\\Http\\Controllers\\Api\\UserController@beforeStore',
@@ -1205,7 +1847,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::CZyixbGsn71PykjK',
+        'as' => 'generated::IH9Ci1h8xAQ0RSxl',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1221,11 +1863,11 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::z4Xr6lRygq9ufQTJ' => 
+    'generated::zeVmAsWrthRPKwyR' => 
     array (
       'methods' => 
       array (
-        0 => 'PATCH',
+        0 => 'PUT',
       ),
       'uri' => 'api/users/{id}',
       'action' => 
@@ -1234,7 +1876,8 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'api',
           1 => 'auth:sanctum',
-          2 => 'abilities:cad_usuario',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:cad_usuario',
         ),
         'uses' => 'App\\Http\\Controllers\\Api\\UserController@beforeUpdate',
         'controller' => 'App\\Http\\Controllers\\Api\\UserController@beforeUpdate',
@@ -1243,7 +1886,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::z4Xr6lRygq9ufQTJ',
+        'as' => 'generated::zeVmAsWrthRPKwyR',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1259,7 +1902,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::fwFEjtYXRZd1SlyW' => 
+    'generated::goWfIPJMC5PURqyp' => 
     array (
       'methods' => 
       array (
@@ -1272,7 +1915,8 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'api',
           1 => 'auth:sanctum',
-          2 => 'abilities:del_usuario',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:del_usuario',
         ),
         'uses' => 'App\\Http\\Controllers\\Api\\UserController@destroy',
         'controller' => 'App\\Http\\Controllers\\Api\\UserController@destroy',
@@ -1281,7 +1925,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::fwFEjtYXRZd1SlyW',
+        'as' => 'generated::goWfIPJMC5PURqyp',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1297,7 +1941,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::OYVLuH1hFvmqSgVV' => 
+    'generated::SRb1xZDuBMo4japa' => 
     array (
       'methods' => 
       array (
@@ -1310,7 +1954,8 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'api',
           1 => 'auth:sanctum',
-          2 => 'abilities:del_usuario',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:del_usuario',
         ),
         'uses' => 'App\\Http\\Controllers\\Api\\UserController@restore',
         'controller' => 'App\\Http\\Controllers\\Api\\UserController@restore',
@@ -1319,7 +1964,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::OYVLuH1hFvmqSgVV',
+        'as' => 'generated::SRb1xZDuBMo4japa',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1335,68 +1980,31 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'users.linkUserUnityProfile' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'PATCH',
-      ),
-      'uri' => 'api/users/link/userUnityProfile/{id}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'api',
-          1 => 'auth:sanctum',
-          2 => 'abilities:cad_usuario',
-        ),
-        'uses' => 'App\\Http\\Controllers\\Api\\UserController@linkUserUnityProfile',
-        'controller' => 'App\\Http\\Controllers\\Api\\UserController@linkUserUnityProfile',
-        'namespace' => NULL,
-        'prefix' => 'api/users',
-        'where' => 
-        array (
-        ),
-        'as' => 'users.linkUserUnityProfile',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'users.getLinksUserUnityProfile' => 
+    'generated::T5Fq3bMhfDkjNwCE' => 
     array (
       'methods' => 
       array (
         0 => 'GET',
         1 => 'HEAD',
       ),
-      'uri' => 'api/users/get/userUnityProfile/{id}',
+      'uri' => 'api/faqs/{id}',
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'api',
           1 => 'auth:sanctum',
-          2 => 'abilities:cad_usuario',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:list_faqs',
         ),
-        'uses' => 'App\\Http\\Controllers\\Api\\UserController@getLinksUserUnityProfile',
-        'controller' => 'App\\Http\\Controllers\\Api\\UserController@getLinksUserUnityProfile',
+        'uses' => 'App\\Http\\Controllers\\Api\\FaqController@show',
+        'controller' => 'App\\Http\\Controllers\\Api\\FaqController@show',
         'namespace' => NULL,
-        'prefix' => 'api/users',
+        'prefix' => 'api/faqs',
         'where' => 
         array (
         ),
-        'as' => 'users.getLinksUserUnityProfile',
+        'as' => 'generated::T5Fq3bMhfDkjNwCE',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1412,29 +2020,108 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'users.removeLinkUserUnity' => 
+    'generated::DTbTmh4ic4wZz5wQ' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'api/faqs',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+          1 => 'auth:sanctum',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:cad_faqs',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\FaqController@beforeStore',
+        'controller' => 'App\\Http\\Controllers\\Api\\FaqController@beforeStore',
+        'namespace' => NULL,
+        'prefix' => 'api/faqs',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::DTbTmh4ic4wZz5wQ',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::dGLssBowjUf07iab' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PUT',
+      ),
+      'uri' => 'api/faqs/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+          1 => 'auth:sanctum',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:cad_faqs',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\FaqController@beforeUpdate',
+        'controller' => 'App\\Http\\Controllers\\Api\\FaqController@beforeUpdate',
+        'namespace' => NULL,
+        'prefix' => 'api/faqs',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::dGLssBowjUf07iab',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::XlhOQ2BVi2TJi7d1' => 
     array (
       'methods' => 
       array (
         0 => 'DELETE',
       ),
-      'uri' => 'api/users/remove/userUnity/{id}',
+      'uri' => 'api/faqs/{id}',
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'api',
           1 => 'auth:sanctum',
-          2 => 'abilities:cad_usuario',
+          2 => 'refreshTokenSanctum',
+          3 => 'abilities:del_faqs',
         ),
-        'uses' => 'App\\Http\\Controllers\\Api\\UserController@removeLinkUserUnity',
-        'controller' => 'App\\Http\\Controllers\\Api\\UserController@removeLinkUserUnity',
+        'uses' => 'App\\Http\\Controllers\\Api\\FaqController@destroy',
+        'controller' => 'App\\Http\\Controllers\\Api\\FaqController@destroy',
         'namespace' => NULL,
-        'prefix' => 'api/users',
+        'prefix' => 'api/faqs',
         'where' => 
         array (
         ),
-        'as' => 'users.removeLinkUserUnity',
+        'as' => 'generated::XlhOQ2BVi2TJi7d1',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1450,90 +2137,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'users.removeLinkUserUnityProfile' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'DELETE',
-      ),
-      'uri' => 'api/users/remove/userUnityProfile/{id}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'api',
-          1 => 'auth:sanctum',
-          2 => 'abilities:cad_usuario',
-        ),
-        'uses' => 'App\\Http\\Controllers\\Api\\UserController@removeLinkUserUnityProfile',
-        'controller' => 'App\\Http\\Controllers\\Api\\UserController@removeLinkUserUnityProfile',
-        'namespace' => NULL,
-        'prefix' => 'api/users',
-        'where' => 
-        array (
-        ),
-        'as' => 'users.removeLinkUserUnityProfile',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'generated::3IMOLPFcfhQqiWEX' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'up',
-      'action' => 
-      array (
-        'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:835:"function () {
-                    $exception = null;
-
-                    try {
-                        \\Illuminate\\Support\\Facades\\Event::dispatch(new \\Illuminate\\Foundation\\Events\\DiagnosingHealth);
-                    } catch (\\Throwable $e) {
-                        if (app()->hasDebugModeEnabled()) {
-                            throw $e;
-                        }
-
-                        report($e);
-
-                        $exception = $e->getMessage();
-                    }
-
-                    return response(\\Illuminate\\Support\\Facades\\View::file(\'C:\\\\ProjetosEstudos\\\\urna-simulado\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Configuration\'.\'/../resources/health-up.blade.php\', [
-                        \'exception\' => $exception,
-                    ]), status: $exception ? 500 : 200);
-                }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"000000000000051a0000000000000000";}}',
-        'as' => 'generated::3IMOLPFcfhQqiWEX',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'generated::evCi6NDEv7AArA17' => 
+    'generated::3NnwO0bAyJMl29bp' => 
     array (
       'methods' => 
       array (
@@ -1549,13 +2153,13 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:44:"function () {
     return \\view(\'welcome\');
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000005380000000000000000";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000005e50000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::evCi6NDEv7AArA17',
+        'as' => 'generated::3NnwO0bAyJMl29bp',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1563,40 +2167,6 @@ app('router')->setCompiledRoutes(
       ),
       'wheres' => 
       array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'storage.local' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'storage/{path}',
-      'action' => 
-      array (
-        'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:3:{s:4:"disk";s:5:"local";s:6:"config";a:5:{s:6:"driver";s:5:"local";s:4:"root";s:52:"C:\\ProjetosEstudos\\urna-simulado\\storage\\app/private";s:5:"serve";b:1;s:5:"throw";b:0;s:6:"report";b:0;}s:12:"isProduction";b:0;}s:8:"function";s:323:"function (\\Illuminate\\Http\\Request $request, string $path) use ($disk, $config, $isProduction) {
-                    return (new \\Illuminate\\Filesystem\\ServeFile(
-                        $disk,
-                        $config,
-                        $isProduction
-                    ))($request, $path);
-                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"000000000000053a0000000000000000";}}',
-        'as' => 'storage.local',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-        'path' => '.*',
       ),
       'bindingFields' => 
       array (

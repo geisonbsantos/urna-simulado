@@ -1,11 +1,4 @@
 <?php return array (
-  'laravel/pail' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Laravel\\Pail\\PailServiceProvider',
-    ),
-  ),
   'laravel/sail' => 
   array (
     'providers' => 
@@ -25,6 +18,24 @@
     'providers' => 
     array (
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
+    ),
+  ),
+  'laravellegends/pt-br-validator' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'LaravelLegends\\PtBrValidator\\ValidatorProvider',
+    ),
+  ),
+  'mews/captcha' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Mews\\Captcha\\CaptchaServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Captcha' => 'Mews\\Captcha\\Facades\\Captcha',
     ),
   ),
   'nesbot/carbon' => 
@@ -48,11 +59,30 @@
       0 => 'Termwind\\Laravel\\TermwindServiceProvider',
     ),
   ),
-  'owen-it/laravel-auditing' => 
+  'pestphp/pest-plugin-laravel' => 
   array (
     'providers' => 
     array (
-      0 => 'OwenIt\\Auditing\\AuditingServiceProvider',
+      0 => 'Pest\\Laravel\\PestServiceProvider',
+    ),
+  ),
+  'spatie/laravel-ignition' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Flare' => 'Spatie\\LaravelIgnition\\Facades\\Flare',
+    ),
+  ),
+  'yajra/laravel-oci8' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Yajra\\Oci8\\Oci8ServiceProvider',
+      1 => 'Yajra\\Oci8\\Oci8ValidationServiceProvider',
     ),
   ),
 );

@@ -2,51 +2,78 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
-use OwenIt\Auditing\Contracts\Auditable;
 
-class User extends Authenticatable implements Auditable
+class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
-    use \OwenIt\Auditing\Auditable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var list<string>
+     * @var array<int, string>
      */
     protected $fillable = [
         'name',
+        'cpf',
         'email',
+        'profile_id',
+        'adress_id',
         'password',
     ];
 
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var list<string>
+     * @var array<int, string>
      */
     protected $hidden = [
         'password',
         'remember_token',
+        'email_verified_at',
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
-     * @return array<string, string>
+     * @var array<string, string>
      */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    protected function setPasswordAttribute($value)
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        $this->attributes['password'] = Hash::make($value);
+    }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = mb_strtoupper($value, 'UTF-8');
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class, 'id', 'profile_id');
+    }
+
+    public function adress()
+    {
+        return $this->belongsTo(Adress::class, 'adress_id');
+    }
+    
+    public function profiles()
+    {
+        return $this->belongsToMany(Profile::class, 'user_profiles', 'user_id', 'profile_id');
+    }
+
+    public function abilities()
+    {
+        return $this->belongsToMany(Ability::class, 'profile_abilities', 'profile_id', 'ability_id');
     }
 }

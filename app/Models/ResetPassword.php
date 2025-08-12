@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Contracts\Auditable;
-class ResetPassword extends Model implements Auditable
+
+class ResetPassword extends Model
 {
-    use \OwenIt\Auditing\Auditable;
     use HasFactory;
 
     protected $table = 'reset_passwords';
+
     protected $fillable = [
         'email',
-        'token'
+        'token',
     ];
 }

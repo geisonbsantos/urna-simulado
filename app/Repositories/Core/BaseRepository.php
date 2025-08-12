@@ -40,7 +40,7 @@ class BaseRepository implements RepositoryInterface
         return $this->entity->paginate($totalPage);
     }
 
-    public function store(array $data)
+    public function store(array $data): void
     {
         $this->entity->firstOrCreate($data);
     }

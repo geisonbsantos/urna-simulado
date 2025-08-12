@@ -2,43 +2,45 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Http\Requests\AttachUserProfilesFormRequest;
+use App\Http\Requests\StoreUpdateUserFormRequest;
 use App\Services\UserService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class UserController extends CrudController
 {
-    private $service;
-
-    function __construct(UserService $service)
+    public function __construct(private UserService $service)
     {
-        $this->service = $service;
+        parent::__construct($service);
     }
 
-    public function index(Request $request)
+    protected function beforeStore(StoreUpdateUserFormRequest $request): JsonResponse
     {
-        // return $this->service->getAll();
-        return User::get();
+        $request->validated();
+
+        return $this->store($request);
     }
 
-    public function getAllUsers(Request $request)
+    protected function beforeUpdate(StoreUpdateUserFormRequest $request, int $id): JsonResponse
     {
-        return $this->service->getAll();
-        // return User::get();
-    }
+        $request->validated();
 
-    public function listUsers(Request $request)
+        return $this->update($request, $id);
+    }
+    
+        protected function storeProfiles(AttachUserProfilesFormRequest $request, int $id): JsonResponse
+        {
+            $request->validated();
+            $this->service->storeProfiles($request->all(), $id);
+    
+            return response()->json(['message' => 'Vínculo realizado com sucesso.'], 200);
+        }
+
+    public function restore(int $id): JsonResponse
     {
-        // return $this->service->listUsers($request);
-        return User::get()->map(function ($user) {
-            return [
-                'id' => $user->id,
-                'name' => $user->name,
-                'email' => $user->email,
-                'created_at' => $user->created_at,
-                'updated_at' => $user->updated_at,
-            ];
-        }); 
+        $this->service->restore($id);
+
+        return response()->json(['message' => 'Registro restaurado com sucesso.'], 200);
     }
 }

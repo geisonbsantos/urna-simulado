@@ -2,10 +2,8 @@
 
 namespace App\Repositories\Contracts;
 
-interface UserInterface
+interface UserInterface extends BaseInterface
 {
-    public function storeUser(array $request);
-
     public function login(object $request);
 
     public function loggedInUser($request);
