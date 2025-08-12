@@ -1,0 +1,33 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: Start-Pack
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: starter-pack
+    container_name: starter-pack-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    networks:
+      - starter-pack
+
+  nginx:
+    image: nginx:alpine
+    container_name: starter-pack-nginx
+    restart: unless-stopped
+    ports:
+      - 5000:80
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - starter-pack
+
+networks:
+  starter-pack:
+    driver: bridge

@@ -2,20 +2,45 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\AttachUserProfilesFormRequest;
+use App\Http\Requests\StoreUpdateUserFormRequest;
 use App\Services\UserService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-abstract class UserController extends CrudController
+class UserController extends CrudController
 {
-    private $service;
-
-    function __construct(UserService $service)
+    public function __construct(private UserService $service)
     {
-        $this->service = $service;
+        parent::__construct($service);
     }
 
-    public function listUsers(Request $request)
+    protected function beforeStore(StoreUpdateUserFormRequest $request): JsonResponse
     {
-        return $this->service->listUsers($request);
+        $request->validated();
+
+        return $this->store($request);
+    }
+
+    protected function beforeUpdate(StoreUpdateUserFormRequest $request, int $id): JsonResponse
+    {
+        $request->validated();
+
+        return $this->update($request, $id);
+    }
+    
+        protected function storeProfiles(AttachUserProfilesFormRequest $request, int $id): JsonResponse
+        {
+            $request->validated();
+            $this->service->storeProfiles($request->all(), $id);
+    
+            return response()->json(['message' => 'Vínculo realizado com sucesso.'], 200);
+        }
+
+    public function restore(int $id): JsonResponse
+    {
+        $this->service->restore($id);
+
+        return response()->json(['message' => 'Registro restaurado com sucesso.'], 200);
     }
 }

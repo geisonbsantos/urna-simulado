@@ -3,36 +3,46 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
+     *
+     * @return void
      */
-    public function run(): void
+    public function run()
     {
-        // User::factory(10)->create();
-
         $users = [
             [
-                'name' => 'Test User',
-                'email' => 'test@example.com',
-                'password' => '123456', // password
+                'name' => 'ADMINISTRADOR GERAL',
+                'cpf' => '90211928534',
+                'email' => 'geison.santos@saude.ba.gov.br',
+                'profile_id' => '1',
+                'adress_id' => '1',
+                'password' => '123456',
+                // 'password' => Hash::make('geral763'),
             ],
             [
-                'name' => 'Admin User',
-                'email' => 'outroteste@teste.teste',
-                'password' => '123456', // password
+                'name' => 'Develop',
+                'cpf' => '12312312387',
+                'email' => 'develop@saude.ba.gov.br',
+                'profile_id' => '2',
+                'adress_id' => '1',
+                'password' => '123456',
+                // 'password' => Hash::make('develop763'),
             ],
         ];
-
         foreach ($users as $value) {
             User::firstOrCreate([
-                'name'       => $value['name'],
-                'email'      => $value['email'],
-                'password'   => bcrypt($value['password'])
+                'name' => $value['name'],
+                'cpf' => $value['cpf'],
+                'email' => $value['email'],
+                'profile_id' => $value['profile_id'],
+                'adress_id' => $value['adress_id'],
+                'password' => $value['password'],
             ]);
         }
     }

@@ -2,38 +2,24 @@
 
 namespace App\Services;
 
-use App\Repositories\Contracts\UserInterface;
 use App\Exceptions\CredentialsException;
 use App\Exceptions\UserException;
 use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
-use App\Http\Resources\UserUnityResource;
-use App\Models\ProfileUserUnity;
-use App\Models\Registration;
-use App\Models\Sector;
-use App\Models\SectorRegistration;
-use App\Models\User;
+use App\Mail\AccountCreateMail;
+use App\Repositories\Contracts\UserInterface;
 use App\Repositories\Core\UserRepository;
-use Illuminate\Http\Request;
-use Laravel\Sanctum\PersonalAccessToken;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class UserService implements UserInterface
 {
-    private $repository;
-
-    public function __construct(UserRepository $repository)
-    {
-        $this->repository = $repository;
-    }
-    
-    public function findWhereFirst(string $column, string $value)
-    {
-        return $this->repository->findWhereFirst($column, $value);
-    }
+    public function __construct(
+        private UserRepository $repository
+    ) {}
 
     public function getAll(): UserCollection
     {
@@ -45,6 +31,11 @@ class UserService implements UserInterface
         return $this->repository->paginate($totalPage);
     }
 
+    public function findWhereFirst(string $column, string $value)
+    {
+        return $this->repository->findWhereFirst($column, $value);
+    }
+
     public function applyFilter(array $data)
     {
         return $this->repository->applyFilter($data);
@@ -52,103 +43,96 @@ class UserService implements UserInterface
 
     public function findById(int $id): UserResource
     {
-        return  new UserResource($this->repository->findById($id));
+        return new UserResource($this->repository->findById($id));
     }
 
-    public function storeUser(array $data)
+    public function storeUser(array $data): void
     {
         $data['password'] = Str::random(10);
-        $user = $this->repository->storeUser($data);
-        $url = config('app.email_url');
 
-        Mail::send('email.accountCreation', ['code' => $data['password'], 'url' => $url], function ($message) use ($data) {
-            $message->to($data['email']);
-            $message->subject('Criação de Conta - SIGTS');
-        });
+        $this->repository->store($data);
 
-        return $user;
+        Mail::to($data['email'])->send(new AccountCreateMail($data));
+    }
+
+    public function store(array $data): void
+    {
+        $data['password'] = Str::random(10);
+
+        $this->repository->store($data);
+
+        Mail::to($data['email'])->send(new AccountCreateMail($data));
     }
 
     public function update(array $request, int $id): void
     {
         $user = $this->findById($id);
-        $this->repository->updateUser($user, $request);
-    }
-
-    public function updateUser(array $request, int $id): void
-    {
-        $user = $this->findById($id);
-        $this->repository->updateUser($user, $request);
+        $this->repository->update($user, $request);
     }
 
     public function destroy(int $id): void
     {
         $user = $this->findById($id);
         $this->repository->destroy($user);
+        $user->tokens()->delete();
     }
-    
+
     public function login(object $request): string
     {
         $user = $this->repository->findWhereFirst('cpf', $request->cpf);
 
-        $registrationIsActive = $user->registrations('user_id', $user->id)->count();
-
-        if (isset($user->deleted_at) && $user->deleted_at != null) {
-            throw new UserException('Usuário desativado!');
-        } 
-        if ($registrationIsActive < 1) {
-            throw new UserException('Usuário sem matrícula ativa!');
+        if (! $user) {
+            throw new CredentialsException($user);
         }
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
+        if ($user->deleted_at != null) {
+            throw new UserException('Usuário desativado! Favor entrar em contato com a Administração.');
+        }
+
+        if (! $user || ! Hash::check($request->password, $user->password)) {
             throw new CredentialsException($user);
         }
         $user->tokens()->delete();
-        $abilities = [];
-        foreach ($user->profile->abilities as  $ability) {
-            array_push($abilities, $ability->slug);
-        }
-        return $user->createToken('AccessToken', $abilities)->plainTextToken;
+
+        $abilities = $user->profile->abilities->pluck('slug')->toArray();
+
+        return $user->createToken('AccessToken', $abilities, now()->addMinutes(480))->plainTextToken;
     }
 
-    public function loggedInUser($request): UserResource
+    public function loggedInUser($request)
     {
         $abilities = $this->abilitesToArray($request->user());
+
         return new UserResource($abilities);
     }
 
     public function logout($request): void
     {
-        $personalAccessToken = new PersonalAccessToken();
+        $personalAccessToken = new PersonalAccessToken;
         $token = substr($request->headers->get('authorization'), 7);
         $personalAccessToken->findToken($token)->delete();
     }
 
     public function updatePassword(string $email, string $password): void
     {
-        $this->repository->updatePassword($email, $password);
+        $this->repository->updatePassword(mb_strtolower($email), $password);
     }
 
     public function abilitesToArray($data)
     {
-        $result = $this->repository->getUserAbilities($data->profile_id);
+        $data['abilities'] = $this->repository->getUserAbilities($data->profile_id);
 
-        $aux = [];
-
-        foreach ($result as  $value) {
-            array_push($aux, $value->abilities);
-        }
-        $data['abilities'] = $aux;
         return $data;
+    }
+
+    public function storeProfiles(array $request, int $id): void
+    {
+        $user = $this->findById($id);
+        $this->repository->storeProfiles($user, $request);
     }
 
     public function restore(int $id)
     {
         $this->repository->restore($id);
-    }
-
-    public function listUsers(Request $request)
-    {
-        return $this->repository->listUsers($request->all());
     }
 }

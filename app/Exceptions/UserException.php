@@ -6,7 +6,7 @@ class UserException extends \Exception
 {
     public $statusCode;
 
-    public function __construct($message, $statusCode = 401)
+    public function __construct($message, $statusCode = 422)
     {
         parent::__construct($message);
         $this->statusCode = $statusCode;
