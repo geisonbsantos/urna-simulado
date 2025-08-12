@@ -46,6 +46,15 @@ class UserService implements UserInterface
         return new UserResource($this->repository->findById($id));
     }
 
+    public function storeUser(array $data): void
+    {
+        $data['password'] = Str::random(10);
+
+        $this->repository->store($data);
+
+        Mail::to($data['email'])->send(new AccountCreateMail($data));
+    }
+
     public function store(array $data): void
     {
         $data['password'] = Str::random(10);
