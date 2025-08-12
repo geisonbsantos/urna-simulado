@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ForgotPasswordController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ReportErrorController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\AdressController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,7 +71,20 @@ Route::group(['middleware' => ['auth:sanctum', 'refreshTokenSanctum']], function
         Route::delete('/{id}', 'destroy')->middleware(['abilities:del_usuario']);
         Route::put('/restore/{id}', 'restore')->middleware(['abilities:del_usuario']);
     });
-
+    /*
+    |--------------------------------------------------------------------------
+    | Users Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::controller(AdressController::class)->prefix('adresses')->group(function () {
+        Route::get('/list_adresses', 'listAdresses')->middleware(['abilities:list_usuario']);
+        Route::get('/', 'index')->middleware(['abilities:list_usuario']);
+        Route::get('/{id}', 'show')->middleware(['abilities:list_usuario']);
+        Route::post('/', 'beforeStore')->middleware(['abilities:cad_usuario']);
+        Route::put('/{id}', 'beforeUpdate')->middleware(['abilities:cad_usuario']);
+        Route::delete('/{id}', 'destroy')->middleware(['abilities:del_usuario']);
+        Route::put('/restore/{id}', 'restore')->middleware(['abilities:del_usuario']);
+    });
     /*
     |--------------------------------------------------------------------------
     | Faq Routes
