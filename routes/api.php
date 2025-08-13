@@ -67,6 +67,7 @@ Route::group(['middleware' => ['auth:sanctum', 'refreshTokenSanctum']], function
         Route::get('/', 'index')->middleware(['abilities:list_usuario']);
         Route::get('/{id}', 'show')->middleware(['abilities:list_usuario']);
         Route::post('/', 'beforeStore')->middleware(['abilities:cad_usuario']);
+        Route::post('/{user}/profiles', 'storeProfiles')->middleware(['abilities:cad_perfil']);
         Route::put('/{id}', 'beforeUpdate')->middleware(['abilities:cad_usuario']);
         Route::delete('/{id}', 'destroy')->middleware(['abilities:del_usuario']);
         Route::put('/restore/{id}', 'restore')->middleware(['abilities:del_usuario']);

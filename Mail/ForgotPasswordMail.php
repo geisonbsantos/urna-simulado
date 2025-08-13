@@ -30,7 +30,7 @@ class ForgotPasswordMail extends Mailable
     public function build()
     {
         return $this
-            ->subject('Resetar Senha - STARTER PACK')
+            ->subject('Resetar Senha - URNA SIMULAÇÃO')
             ->view('email.forgetPassword', [
                 'code' => $this->data['token'],
             ]);

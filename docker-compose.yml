@@ -3,22 +3,22 @@ services:
   app:
     build:
       args:
-        user: Start-Pack
+        user: Urna-Simulado
         uid: 1000
       context: ./
       dockerfile: Dockerfile
-    image: starter-pack
-    container_name: starter-pack-app
+    image: urna-simulado
+    container_name: urna-simulado-app
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
       - ./:/var/www
     networks:
-      - starter-pack
+      - urna-simulado
 
   nginx:
     image: nginx:alpine
-    container_name: starter-pack-nginx
+    container_name: urna-simulado-nginx
     restart: unless-stopped
     ports:
       - 5000:80
@@ -26,8 +26,8 @@ services:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d/
     networks:
-      - starter-pack
+      - urna-simulado
 
 networks:
-  starter-pack:
+  urna-simulado:
     driver: bridge

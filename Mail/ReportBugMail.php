@@ -30,7 +30,7 @@ class ReportBugMail extends Mailable
     public function build()
     {
         return $this
-            ->subject('Relato de Problemas - Starter Pack')
+            ->subject('Relato de Problemas - URNA SIMULADO')
             ->view('email.reportBug', [
                 'description' => $this->data['description'],
                 'subject' => $this->data['subject'],

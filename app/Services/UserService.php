@@ -55,13 +55,15 @@ class UserService implements UserInterface
         Mail::to($data['email'])->send(new AccountCreateMail($data));
     }
 
-    public function store(array $data): void
+    public function store(array $data)
     {
         $data['password'] = Str::random(10);
 
-        $this->repository->store($data);
+        $storeUser = $this->repository->storeUser($data);
 
-        Mail::to($data['email'])->send(new AccountCreateMail($data));
+        // Mail::to($data['email'])->send(new AccountCreateMail($data));
+
+        return $storeUser;
     }
 
     public function update(array $request, int $id): void
@@ -93,6 +95,10 @@ class UserService implements UserInterface
             throw new CredentialsException($user);
         }
         $user->tokens()->delete();
+
+        $user->update(['profile_id' => $request['profile_id']]);
+
+        $user = $this->repository->findWhereFirst('cpf', $request->cpf);
 
         $abilities = $user->profile->abilities->pluck('slug')->toArray();
 

@@ -25,12 +25,19 @@ class ProfileSeeder extends Seeder
                 'name' => 'USUÁRIO',
                 'slug' => 'usuario',
             ],
+            [
+                'name' => 'ELEITOR',
+                'slug' => 'eleitor',
+            ],
+            [
+                'name' => 'CANDIDATO',
+                'slug' => 'candidato',
+            ],
         ];
         foreach ($profiles as $value) {
             Profile::firstOrCreate([
                 'name' => $value['name'],
                 'slug' => Str::slug($value['name']),
-                // 'slug' => $value['slug'],
             ]);
         }
     }

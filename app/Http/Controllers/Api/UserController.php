@@ -18,24 +18,21 @@ class UserController extends CrudController
     protected function beforeStore(StoreUpdateUserFormRequest $request): JsonResponse
     {
         $request->validated();
-
         return $this->store($request);
     }
 
     protected function beforeUpdate(StoreUpdateUserFormRequest $request, int $id): JsonResponse
     {
         $request->validated();
-
         return $this->update($request, $id);
     }
-    
-        protected function storeProfiles(AttachUserProfilesFormRequest $request, int $id): JsonResponse
-        {
-            $request->validated();
-            $this->service->storeProfiles($request->all(), $id);
-    
-            return response()->json(['message' => 'Vínculo realizado com sucesso.'], 200);
-        }
+
+    protected function storeProfiles(Request $request, int $id): JsonResponse
+    {
+        $this->service->storeProfiles($request->all(), $id);
+
+        return response()->json(['message' => 'Vínculo realizado com sucesso.'], 200);
+    }
 
     public function restore(int $id): JsonResponse
     {

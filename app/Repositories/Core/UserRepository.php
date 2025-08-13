@@ -4,6 +4,7 @@ namespace App\Repositories\Core;
 
 use App\Models\ProfileAbility;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Hash;
@@ -49,6 +50,26 @@ class UserRepository extends BaseRepository
             ->toArray();
     }
 
+    public function storeUser(array $data)
+    {
+        try {
+            DB::beginTransaction();
+
+            $data['password'] = Hash::make($data['password']);
+
+            $storeUser = $this->entity->create($data);
+            
+            $storeUser->profiles()->sync($data['profiles'] ?? []);
+
+            DB::commit();
+
+            return $storeUser;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+    }
+
     public function storeProfiles(object $user, array $request): void
     {
         $user->profiles()->sync($request['profiles']);
@@ -66,7 +87,7 @@ class UserRepository extends BaseRepository
                     $value = mb_strtoupper($value, 'UTF-8');
                     $query->where($item, 'LIKE', "%$value%");
                 } else {
-                    $query->whereRaw("UPPER($item) LIKE '%'||UPPER('".$value."')||'%'");
+                    $query->whereRaw("UPPER($item) LIKE '%'||UPPER('" . $value . "')||'%'");
                 }
             }
         }

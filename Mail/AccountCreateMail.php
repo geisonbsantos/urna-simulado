@@ -30,7 +30,7 @@ class AccountCreateMail extends Mailable
     public function build()
     {
         return $this
-            ->subject('Criação de Conta - STARTER PACK')
+            ->subject('Criação de Conta - URNA SIMULAÇÃO')
             ->view('email.accountCreation', [
                 'code' => $this->data['password'],
             ]);

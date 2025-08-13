@@ -108,6 +108,52 @@ class AbilitySeeder extends Seeder
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
+            /*
+            |--------------------------------------------------------------------------
+            | Abilities for votes
+            |--------------------------------------------------------------------------
+            */
+            [
+                'name' => 'Listar votos',
+                'slug' => 'list_votos',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'name' => 'Cadastrar votos',
+                'slug' => 'cad_votos',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'name' => 'Deletar votos',
+                'slug' => 'del_votos',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            /*
+            |--------------------------------------------------------------------------
+            | Abilities for candidates
+            |--------------------------------------------------------------------------
+            */
+            [
+                'name' => 'Listar candidatos',
+                'slug' => 'list_candidatos',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'name' => 'Cadastrar votos',
+                'slug' => 'cad_candidatos',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'name' => 'Deletar votos',
+                'slug' => 'del_candidatos',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
         ];
         foreach ($abilities as $value) {
             Ability::firstOrCreate([
