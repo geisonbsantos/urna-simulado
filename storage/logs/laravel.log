@@ -5326,6 +5326,7 @@ Stack trace:
 #45 C:\\ProjetosEstudos\\urna-simulado\\artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #46 {main}
 "} 
+<<<<<<< HEAD
 [2025-08-12 13:37:52] local.ERROR: Call to undefined method App\Models\Adress::withTrashed() {"userId":1,"exception":"[object] (BadMethodCallException(code: 0): Call to undefined method App\\Models\\Adress::withTrashed() at C:\\ProjetosEstudos\\urna-simulado\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Traits\\ForwardsCalls.php:67)
 [stacktrace]
 #0 C:\\ProjetosEstudos\\urna-simulado\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Traits\\ForwardsCalls.php(36): Illuminate\\Database\\Eloquent\\Model::throwBadMethodCallException('withTrashed')
@@ -6595,6 +6596,9 @@ Stack trace:
 #45 {main}
 "} 
 [2025-08-12 21:16:38] local.ERROR: Call to a member function pluck() on array {"userId":1,"exception":"[object] (Error(code: 0): Call to a member function pluck() on array at C:\\ProjetosEstudos\\urna-simulado\\app\\Http\\Resources\\UserResource.php:29)
+=======
+[2025-08-13 19:42:58] local.ERROR: Call to a member function pluck() on array {"userId":1,"exception":"[object] (Error(code: 0): Call to a member function pluck() on array at C:\\ProjetosEstudos\\urna-simulado\\app\\Http\\Resources\\UserResource.php:29)
+>>>>>>> main
 [stacktrace]
 #0 C:\\ProjetosEstudos\\urna-simulado\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Resources\\Json\\JsonResource.php(108): App\\Http\\Resources\\UserResource->toArray(Object(Illuminate\\Http\\Request))
 #1 C:\\ProjetosEstudos\\urna-simulado\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Resources\\Json\\JsonResource.php(255): Illuminate\\Http\\Resources\\Json\\JsonResource->resolve(Object(Illuminate\\Http\\Request))
@@ -6657,7 +6661,11 @@ Stack trace:
 #58 C:\\ProjetosEstudos\\urna-simulado\\server.php(19): require_once('C:\\\\ProjetosEstu...')
 #59 {main}
 "} 
+<<<<<<< HEAD
 [2025-08-12 21:16:38] local.ERROR: Attempt to read property "headers" on null {"userId":1,"exception":"[object] (ErrorException(code: 0): Attempt to read property \"headers\" on null at C:\\ProjetosEstudos\\urna-simulado\\app\\Http\\Middleware\\RefreshTokenSanctum.php:22)
+=======
+[2025-08-13 19:42:58] local.ERROR: Attempt to read property "headers" on null {"userId":1,"exception":"[object] (ErrorException(code: 0): Attempt to read property \"headers\" on null at C:\\ProjetosEstudos\\urna-simulado\\app\\Http\\Middleware\\RefreshTokenSanctum.php:22)
+>>>>>>> main
 [stacktrace]
 #0 C:\\ProjetosEstudos\\urna-simulado\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(256): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Attempt to read...', 'C:\\\\ProjetosEstu...', 22)
 #1 C:\\ProjetosEstudos\\urna-simulado\\app\\Http\\Middleware\\RefreshTokenSanctum.php(22): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}(2, 'Attempt to read...', 'C:\\\\ProjetosEstu...', 22)
@@ -6706,6 +6714,7 @@ Stack trace:
 #44 C:\\ProjetosEstudos\\urna-simulado\\server.php(19): require_once('C:\\\\ProjetosEstu...')
 #45 {main}
 "} 
+<<<<<<< HEAD
 [2025-08-12 21:17:18] local.ERROR: Call to a member function pluck() on array {"userId":1,"exception":"[object] (Error(code: 0): Call to a member function pluck() on array at C:\\ProjetosEstudos\\urna-simulado\\app\\Http\\Resources\\UserResource.php:29)
 [stacktrace]
 #0 C:\\ProjetosEstudos\\urna-simulado\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Resources\\Json\\JsonResource.php(108): App\\Http\\Resources\\UserResource->toArray(Object(Illuminate\\Http\\Request))
@@ -13034,3 +13043,5 @@ Stack trace:
 #80 C:\\ProjetosEstudos\\urna-simulado\\server.php(19): require_once('C:\\\\ProjetosEstu...')
 #81 {main}
 "} 
+=======
+>>>>>>> main
