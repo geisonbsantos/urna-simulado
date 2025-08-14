@@ -2,6 +2,10 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Profile;
+use App\Models\ProfileAbility;
+use App\Models\User;
+use App\Models\UserProfiles;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
@@ -26,8 +30,14 @@ class UserResource extends JsonResource
             'adress_id' => $this->adress_id,
             'created_at' => $this->created_at,
             'deleted_at' => $this->deleted_at,
-            'abilities' => $this->abilities->pluck('slug'), // Assuming abilities is a collection of Ability models
-            'profiles' => $this->profiles,
+            'abilities' => $this->abilities,
+            'profiles' => $this->profiles->map(function ($profile) {
+                return [
+                    'id' => $profile->id,
+                    'name' => $profile->name,
+                    'abilities' => $profile->abilities->pluck('slug'),
+                ];
+            }),
         ];
     }
 }

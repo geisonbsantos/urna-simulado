@@ -62,6 +62,11 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class, 'id', 'profile_id');
     }
 
+    public function prof()
+    {
+        return $this->belongsTo(Profile::class, 'profile_id');
+    }
+
     public function adress()
     {
         return $this->belongsTo(Adress::class, 'adress_id');
@@ -72,8 +77,8 @@ class User extends Authenticatable
         return $this->belongsToMany(Profile::class, 'user_profiles', 'user_id', 'profile_id');
     }
 
-    public function abilities()
-    {
-        return $this->belongsToMany(Ability::class, 'profile_abilities', 'profile_id', 'ability_id');
-    }
+    // public function abilities()
+    // {
+    //     return $this->Many(Ability::class, 'profile_abilities', 'profile_id', 'ability_id');
+    // }
 }
