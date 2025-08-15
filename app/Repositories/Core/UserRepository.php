@@ -18,7 +18,7 @@ class UserRepository extends BaseRepository
 
     public function getAll(): Collection
     {
-        return $this->entity->withTrashed()->with('profile', 'adress')->get();
+        return $this->entity->withTrashed()->with('profile', 'address')->get();
     }
 
     public function findById(int $id): object
@@ -58,7 +58,7 @@ class UserRepository extends BaseRepository
             $data['password'] = Hash::make($data['password']);
 
             $storeUser = $this->entity->create($data);
-            
+
             $storeUser->profiles()->sync($data['profiles'] ?? []);
 
             DB::commit();
@@ -77,7 +77,7 @@ class UserRepository extends BaseRepository
 
     public function applyFilter(array $items)
     {
-        $query = $this->entity::query();
+        $query = $this->entity::with('profile', 'profiles', 'address');
         foreach ($items as $item => $value) {
             if ($item == 'page' || $item == 'per_page') {
                 continue;
@@ -91,7 +91,7 @@ class UserRepository extends BaseRepository
                 }
             }
         }
-        $page = ($item === 'per_pege') ? $page = $value : $page = 10;
+        $page = isset($items['per_page']) ? $items['per_page'] : 10;
 
         return $query->orderBy('name')->paginate($page);
     }

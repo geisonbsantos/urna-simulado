@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\AttachUserProfilesFormRequest;
 use App\Http\Requests\StoreUpdateUserFormRequest;
+use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -39,5 +40,11 @@ class UserController extends CrudController
         $this->service->restore($id);
 
         return response()->json(['message' => 'Registro restaurado com sucesso.'], 200);
+    }
+
+    public function listUsers(Request $request)
+    {
+        // $this->service->applyFilter($request->all());
+        return User::with('profile', 'address')->get();
     }
 }

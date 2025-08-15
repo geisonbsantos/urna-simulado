@@ -66,6 +66,7 @@ Route::group(['middleware' => ['auth:sanctum', 'refreshTokenSanctum']], function
     */
     Route::controller(UserController::class)->prefix('users')->group(function () {
         Route::get('/', 'index')->middleware(['abilities:list_usuario']);
+        Route::get('/list_users', 'listUsers')->middleware(['abilities:list_usuario']);
         Route::get('/{id}', 'show')->middleware(['abilities:list_usuario']);
         Route::post('/', 'beforeStore')->middleware(['abilities:cad_usuario']);
         Route::post('/{user}/profiles', 'storeProfiles')->middleware(['abilities:cad_perfil']);
@@ -79,8 +80,8 @@ Route::group(['middleware' => ['auth:sanctum', 'refreshTokenSanctum']], function
     |--------------------------------------------------------------------------
     */
     Route::controller(AddressController::class)->prefix('addresses')->group(function () {
-        Route::get('/list_addresses', 'listAddresses')->middleware(['abilities:list_usuario']);
         Route::get('/', 'index')->middleware(['abilities:list_usuario']);
+        Route::get('/list_addresses', 'listAddresses')->middleware(['abilities:list_usuario']);
         Route::get('/{id}', 'show')->middleware(['abilities:list_usuario']);
         Route::post('/', 'beforeStore')->middleware(['abilities:cad_usuario']);
         Route::put('/{id}', 'beforeUpdate')->middleware(['abilities:cad_usuario']);
@@ -93,8 +94,8 @@ Route::group(['middleware' => ['auth:sanctum', 'refreshTokenSanctum']], function
     |--------------------------------------------------------------------------
     */
     Route::controller(ElectionTypeController::class)->prefix('election_types')->group(function () {
-        Route::get('/list_election_types', 'listElectionTypes')->middleware(['abilities:list_usuario']);
         Route::get('/', 'index')->middleware(['abilities:list_usuario']);
+        Route::get('/list_election_types', 'listElectionTypes')->middleware(['abilities:list_usuario']);
         Route::get('/{id}', 'show')->middleware(['abilities:list_usuario']);
         Route::post('/', 'beforeStore')->middleware(['abilities:cad_usuario']);
         Route::put('/{id}', 'beforeUpdate')->middleware(['abilities:cad_usuario']);

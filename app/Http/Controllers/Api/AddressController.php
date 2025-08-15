@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\StoreUpdateAddressFormRequest;
+use App\Models\Address;
 use App\Services\AddressService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -38,6 +39,7 @@ class AddressController extends CrudController
     // Listar endereços
     public function listAddresses(Request $request)
     {
-        $this->service->applyFilter($request->all());
+        // $this->service->applyFilter($request->all());
+        return Address::with('users')->get();
     }
 }

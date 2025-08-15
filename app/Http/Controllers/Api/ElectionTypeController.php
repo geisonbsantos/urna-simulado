@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\StoreUpdateElectionTypeFormRequest;
+use App\Models\ElectionType;
 use App\Services\ElectionTypeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -38,6 +39,7 @@ class ElectionTypeController extends CrudController
     // Listar endereços
     public function listElectionTypes(Request $request)
     {
-        $this->service->applyFilter($request->all());
+        // $this->service->applyFilter($request->all());
+        return ElectionType::with('elections')->get();
     }
 }
