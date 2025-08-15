@@ -35,6 +35,13 @@ class UserController extends CrudController
         return response()->json(['message' => 'Vínculo realizado com sucesso.'], 200);
     }
 
+    public function destroy(int $id): JsonResponse
+    {
+        $this->service->destroy($id);
+
+        return response()->json(['message' => 'Registro deletado com sucesso.'], 200);
+    }
+
     public function restore(int $id): JsonResponse
     {
         $this->service->restore($id);
@@ -44,7 +51,7 @@ class UserController extends CrudController
 
     public function listUsers(Request $request)
     {
-        // $this->service->applyFilter($request->all());
-        return User::with('profile', 'address')->get();
+        $response = $this->service->applyFilter($request->all());
+        return response($response, 200);
     }
 }

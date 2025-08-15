@@ -56,6 +56,6 @@ class CrudController extends Controller
     {
         $this->service->destroy($id);
 
-        return response()->json(['message' => 'Registro deletado com sucesso.'], 204);
+        return response()->json(['message' => 'Registro deletado com sucesso.'], 200);
     }
 }

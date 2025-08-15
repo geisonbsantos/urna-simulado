@@ -11,9 +11,18 @@ use Illuminate\Support\Facades\Hash;
 
 class UserRepository extends BaseRepository
 {
-    public function __construct(private User $entity)
+    // public function __construct(private User $entity)
+    // {
+    //     parent::__construct($entity);
+    // }
+    private $entity;
+    private $user;
+
+    public function __construct(User $entity)
     {
         parent::__construct($entity);
+        $this->user=$entity;
+        $this->entity=$entity;
     }
 
     public function getAll(): Collection
@@ -76,23 +85,22 @@ class UserRepository extends BaseRepository
     }
 
     public function applyFilter(array $items)
-    {
-        $query = $this->entity::with('profile', 'profiles', 'address');
-        foreach ($items as $item => $value) {
-            if ($item == 'page' || $item == 'per_page') {
-                continue;
-            }
-            if ($value) {
-                if (in_array($item, ['name'])) {
-                    $value = mb_strtoupper($value, 'UTF-8');
-                    $query->where($item, 'LIKE', "%$value%");
-                } else {
-                    $query->whereRaw("UPPER($item) LIKE '%'||UPPER('" . $value . "')||'%'");
-                }
-            }
-        }
-        $page = isset($items['per_page']) ? $items['per_page'] : 10;
-
-        return $query->orderBy('name')->paginate($page);
-    }
+	{
+		$query = $this->entity::query()->with('profile', 'profiles', 'address');
+		foreach ($items as $item => $value) {
+			if ($item == 'page' || $item == 'per_page') {
+				continue;
+			}
+			if ($value) {
+				if (in_array($item, ['name'])) {
+					$value = mb_strtoupper($value, 'UTF-8');
+					$query->where($item, 'LIKE',  "%$value%");
+				} else {
+					$query->whereRaw("UPPER($item) LIKE '%'||UPPER('" . $value . "')||'%'");
+				}
+			}
+		}
+		$page = ($item === "per_page") ? $value : 10;
+		return $query->orderBy('name')->paginate($page);
+	}
 }

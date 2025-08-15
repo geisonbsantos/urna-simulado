@@ -34,23 +34,22 @@ class ElectionTypeRepository extends BaseRepository
     }
 
     public function applyFilter(array $items)
-    {
-        $query = $this->entity::query();
-        foreach ($items as $item => $value) {
-            if ($item == 'page' || $item == 'per_page') {
-                continue;
-            }
-            if ($value) {
-                if (in_array($item, ['description'])) {
-                    $value = mb_strtoupper($value, 'UTF-8');
-                    $query->where($item, 'LIKE', "%$value%");
-                } else {
-                    $query->whereRaw("UPPER($item) LIKE '%'||UPPER('".$value."')||'%'");
-                }
-            }
-        }
-        $page = ($item === 'per_pege') ? $page = $value : $page = 10;
-
-        return $query->paginate($page);
-    }
+	{
+		$query = $this->entity::query()->with('elections');
+		foreach ($items as $item => $value) {
+			if ($item == 'page' || $item == 'per_page') {
+				continue;
+			}
+			if ($value) {
+				if (in_array($item, ['description'])) {
+					$value = mb_strtoupper($value, 'UTF-8');
+					$query->where($item, 'LIKE',  "%$value%");
+				} else {
+					$query->whereRaw("UPPER($item) LIKE '%'||UPPER('" . $value . "')||'%'");
+				}
+			}
+		}
+		$page = ($item === "per_page") ? $value : 10;
+		return $query->orderBy('desciption')->paginate($page);
+	}
 }

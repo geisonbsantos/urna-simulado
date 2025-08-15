@@ -29,6 +29,13 @@ class AddressController extends CrudController
         return $this->update($request, $id);
     }
 
+    public function destroy(int $id): JsonResponse
+    {
+        $this->service->destroy($id);
+
+        return response()->json(['message' => 'Registro deletado com sucesso.'], 200);
+    }
+
     public function restore(int $id): JsonResponse
     {
         $this->service->restore($id);
@@ -36,10 +43,9 @@ class AddressController extends CrudController
         return response()->json(['message' => 'Registro restaurado com sucesso.'], 200);
     }
 
-    // Listar endereços
     public function listAddresses(Request $request)
     {
-        // $this->service->applyFilter($request->all());
-        return Address::with('users')->get();
+        $response = $this->service->applyFilter($request->all());
+        return response($response, 200);
     }
 }

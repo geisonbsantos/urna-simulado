@@ -30,7 +30,7 @@ class ElectionTypeService
 
     public function applyFilter(array $data)
     {
-        return $this->repository->getAll($data);
+        return $this->repository->applyFilter($data);
     }
 
     public function findById(int $id): ElectionTypeResource

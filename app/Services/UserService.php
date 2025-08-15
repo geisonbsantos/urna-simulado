@@ -72,13 +72,6 @@ class UserService implements UserInterface
         $this->repository->update($user, $request);
     }
 
-    public function destroy(int $id): void
-    {
-        $user = $this->findById($id);
-        $this->repository->destroy($user);
-        $user->tokens()->delete();
-    }
-
     public function login(object $request): string
     {
         $user = $this->repository->findWhereFirst('cpf', $request->cpf);
@@ -135,6 +128,12 @@ class UserService implements UserInterface
     {
         $user = $this->findById($id);
         $this->repository->storeProfiles($user, $request);
+    }
+
+    public function destroy(int $id): void
+    {
+        $user = $this->findById($id);
+        $this->repository->destroy($user);
     }
 
     public function restore(int $id)
