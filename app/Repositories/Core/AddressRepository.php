@@ -2,13 +2,13 @@
 
 namespace App\Repositories\Core;
 
-use App\Models\Adress;
+use App\Models\Address;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class AdressRepository extends BaseRepository
+class AddressRepository extends BaseRepository
 {
-    public function __construct(private Adress $entity)
+    public function __construct(private Address $entity)
     {
         parent::__construct($entity);
     }

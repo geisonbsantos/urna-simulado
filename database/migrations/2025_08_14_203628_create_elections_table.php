@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('adresses', function (Blueprint $table) {
+        Schema::create('elections', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->string('ibge_code', 7); // 7 dígitos para o código IBGE
+            $table->foreignId('election_type_id')->constrained('election_types')->cascadeOnDelete();
+            $table->foreignId('address_id')->constrained('election_types')->cascadeOnDelete();
+            $table->date('period');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('adresses');
+        Schema::dropIfExists('elections');
     }
 };

@@ -15,11 +15,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             ProfileSeeder::class,
-            AdressSeeder::class,
+            AddressSeeder::class,
             UserSeeder::class,
             AbilitySeeder::class,
             ProfileAbilitySeeder::class,
             UserProfileSeeder::class,
+            ElectionTypeSeeder::class,
         ]);
     }
 }

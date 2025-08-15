@@ -2,27 +2,26 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\AttachAdressProfilesFormRequest;
-use App\Http\Requests\StoreUpdateAdressFormRequest;
-use App\Services\AdressService;
+use App\Http\Requests\StoreUpdateAddressFormRequest;
+use App\Services\AddressService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class AdressController extends CrudController
+class AddressController extends CrudController
 {
-    public function __construct(private AdressService $service)
+    public function __construct(private AddressService $service)
     {
         parent::__construct($service);
     }
 
-    protected function beforeStore(StoreUpdateAdressFormRequest $request): JsonResponse
+    protected function beforeStore(StoreUpdateAddressFormRequest $request): JsonResponse
     {
         $request->validated();
 
         return $this->store($request);
     }
 
-    protected function beforeUpdate(StoreUpdateAdressFormRequest $request, int $id): JsonResponse
+    protected function beforeUpdate(StoreUpdateAddressFormRequest $request, int $id): JsonResponse
     {
         $request->validated();
 
@@ -37,7 +36,7 @@ class AdressController extends CrudController
     }
 
     // Listar endereços
-    public function listAdresses(Request $request)
+    public function listAddresses(Request $request)
     {
         $this->service->applyFilter($request->all());
     }

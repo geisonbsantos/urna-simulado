@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Adress;
+use App\Models\Address;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
-class AdressSeeder extends Seeder
+class AddressSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,11 +15,6 @@ class AdressSeeder extends Seeder
      */
     public function run()
     {
-        $adress = [
-            [
-                'ibge' => '',
-            ],
-        ];
             // Lista de municípios da Bahia com seus códigos IBGE
             $municipiosBahia = [
                 ['name' => 'Abaíra', 'ibge_code' => '2900108'],
@@ -442,7 +437,7 @@ class AdressSeeder extends Seeder
             ];
 
             foreach ($municipiosBahia as $municipio) {
-                Adress::firstOrCreate([
+                Address::firstOrCreate([
                     'name' => $municipio['name'],
                     'ibge_code' => $municipio['ibge_code'],
                 ]);

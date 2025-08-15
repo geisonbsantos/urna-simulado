@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
                 'cpf' => '90211928534',
                 'email' => 'geison.santos@saude.ba.gov.br',
                 'profile_id' => '1',
-                'adress_id' => '1',
+                'address_id' => '1',
                 'password' => '123456',
                 // 'password' => Hash::make('geral763'),
             ],
@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
                 'cpf' => '12312312387',
                 'email' => 'develop@saude.ba.gov.br',
                 'profile_id' => '2',
-                'adress_id' => '1',
+                'address_id' => '1',
                 'password' => '123456',
                 // 'password' => Hash::make('develop763'),
             ],
@@ -41,7 +41,7 @@ class UserSeeder extends Seeder
                 'cpf' => $value['cpf'],
                 'email' => $value['email'],
                 'profile_id' => $value['profile_id'],
-                'adress_id' => $value['adress_id'],
+                'address_id' => $value['address_id'],
                 'password' => $value['password'],
             ]);
         }

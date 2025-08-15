@@ -2,20 +2,20 @@
 
 namespace App\Services;
 
-use App\Http\Resources\AdressCollection;
-use App\Http\Resources\AdressResource;
-use App\Repositories\Core\AdressRepository;
+use App\Http\Resources\ElectionTypeCollection;
+use App\Http\Resources\ElectionTypeResource;
+use App\Repositories\Core\ElectionTypeRepository;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class AdressService
+class ElectionTypeService
 {
     public function __construct(
-        private AdressRepository $repository
+        private ElectionTypeRepository $repository
     ) {}
 
-    public function getAll(): AdressCollection
+    public function getAll(): ElectionTypeCollection
     {
-        return new AdressCollection($this->repository->getAll());
+        return new ElectionTypeCollection($this->repository->getAll());
     }
 
     public function paginate(int $totalPage): LengthAwarePaginator
@@ -30,12 +30,12 @@ class AdressService
 
     public function applyFilter(array $data)
     {
-        return $this->repository->applyFilter($data);
+        return $this->repository->getAll($data);
     }
 
-    public function findById(int $id): AdressResource
+    public function findById(int $id): ElectionTypeResource
     {
-        return new AdressResource($this->repository->findById($id));
+        return new ElectionTypeResource($this->repository->findById($id));
     }
 
     public function store(array $data): void
@@ -45,14 +45,14 @@ class AdressService
 
     public function update(array $request, int $id): void
     {
-        $Adress = $this->findById($id);
-        $this->repository->update($Adress, $request);
+        $ElectionType = $this->findById($id);
+        $this->repository->update($ElectionType, $request);
     }
 
     public function destroy(int $id): void
     {
-        $Adress = $this->findById($id);
-        $this->repository->destroy($Adress);
+        $ElectionType = $this->findById($id);
+        $this->repository->destroy($ElectionType);
     }
 
     public function restore(int $id)

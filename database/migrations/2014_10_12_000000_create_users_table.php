@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('cpf', 11)->unique();
             $table->string('email')->unique();
             $table->foreignId('profile_id')->constrained('profiles')->cascadeOnDelete();
-            $table->foreignId('adress_id')->constrained('adresses')->cascadeOnDelete();
+            $table->foreignId('address_id')->constrained('addresses')->cascadeOnDelete();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

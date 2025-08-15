@@ -23,7 +23,7 @@ class User extends Authenticatable
         'cpf',
         'email',
         'profile_id',
-        'adress_id',
+        'address_id',
         'password',
     ];
 
@@ -67,9 +67,9 @@ class User extends Authenticatable
         return $this->belongsTo(Profile::class, 'profile_id');
     }
 
-    public function adress()
+    public function address()
     {
-        return $this->belongsTo(Adress::class, 'adress_id');
+        return $this->belongsTo(Address::class, 'address_id');
     }
     
     public function profiles()
