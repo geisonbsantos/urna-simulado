@@ -76,6 +76,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Profile::class, 'user_profiles', 'user_id', 'profile_id');
     }
+    public function elections()
+    {
+        return $this->hasMany(Election::class, 'user_id');
+    }
 
     // public function abilities()
     // {
