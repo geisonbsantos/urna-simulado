@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\StoreUpdateElectionTypeFormRequest;
-use App\Services\ElectionTypeService;
+use App\Http\Requests\StoreUpdateCandidateTypeFormRequest;
+use App\Services\CandidateTypeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class ElectionTypeController extends CrudController
+class CandidateTypeController extends CrudController
 {
-    public function __construct(private ElectionTypeService $service)
+    public function __construct(private CandidateTypeService $service)
     {
         parent::__construct($service);
     }
 
-    protected function beforeStore(StoreUpdateElectionTypeFormRequest $request): JsonResponse
+    protected function beforeStore(StoreUpdateCandidateTypeFormRequest $request): JsonResponse
     {
         $request->validated();
 
         return $this->store($request);
     }
 
-    protected function beforeUpdate(StoreUpdateElectionTypeFormRequest $request, int $id): JsonResponse
+    protected function beforeUpdate(StoreUpdateCandidateTypeFormRequest $request, int $id): JsonResponse
     {
         $request->validated();
 
@@ -42,7 +42,7 @@ class ElectionTypeController extends CrudController
         return response()->json(['message' => 'Registro restaurado com sucesso.'], 200);
     }
 
-    public function listElectionTypes(Request $request)
+    public function listCandidateTypes(Request $request)
     {
         $response = $this->service->applyFilter($request->all());
         return response($response, 200);

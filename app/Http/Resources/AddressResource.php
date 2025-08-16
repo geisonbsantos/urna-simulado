@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ElectionTypeResource extends JsonResource
+class AddressResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,7 +16,11 @@ class ElectionTypeResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'description' => $this->description,
+            'name' => $this->name,
+            'ibge_code' => $this->ibge_code,
+            'ceated_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'deleted_at' => $this->deleted_at,
         ];
     }
 }

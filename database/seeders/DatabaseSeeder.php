@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             ProfileAbilitySeeder::class,
             UserProfileSeeder::class,
             ElectionTypeSeeder::class,
+            CandidateTypeSeeder::class,
         ]);
     }
 }
