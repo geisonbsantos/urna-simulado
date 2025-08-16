@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\CandidateTypeController;
 use App\Http\Controllers\Api\ElectionController;
 use App\Http\Controllers\Api\ElectionTypeController;
+use App\Http\Controllers\Api\CandidateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -126,6 +127,20 @@ Route::group(['middleware' => ['auth:sanctum', 'refreshTokenSanctum']], function
     Route::controller(CandidateTypeController::class)->prefix('candidate_types')->group(function () {
         Route::get('/', 'index')->middleware(['abilities:list_usuario']);
         Route::get('/list_candidate_types', 'listCandidateTypes')->middleware(['abilities:list_usuario']);
+        Route::get('/{id}', 'show')->middleware(['abilities:list_usuario']);
+        Route::post('/', 'beforeStore')->middleware(['abilities:cad_usuario']);
+        Route::put('/{id}', 'beforeUpdate')->middleware(['abilities:cad_usuario']);
+        Route::delete('/{id}', 'destroy')->middleware(['abilities:del_usuario']);
+        Route::put('/restore/{id}', 'restore')->middleware(['abilities:del_usuario']);
+    });
+    /*
+    |--------------------------------------------------------------------------
+    | Candidate Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::controller(CandidateController::class)->prefix('candidates')->group(function () {
+        Route::get('/', 'index')->middleware(['abilities:list_usuario']);
+        Route::get('/list_candidates', 'listCandidates')->middleware(['abilities:list_usuario']);
         Route::get('/{id}', 'show')->middleware(['abilities:list_usuario']);
         Route::post('/', 'beforeStore')->middleware(['abilities:cad_usuario']);
         Route::put('/{id}', 'beforeUpdate')->middleware(['abilities:cad_usuario']);
