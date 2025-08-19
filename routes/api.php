@@ -12,6 +12,8 @@ use App\Http\Controllers\Api\CandidateTypeController;
 use App\Http\Controllers\Api\ElectionController;
 use App\Http\Controllers\Api\ElectionTypeController;
 use App\Http\Controllers\Api\CandidateController;
+use App\Http\Controllers\Api\RegistrationController;
+use App\Http\Controllers\Api\VoteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -141,6 +143,34 @@ Route::group(['middleware' => ['auth:sanctum', 'refreshTokenSanctum']], function
     Route::controller(CandidateController::class)->prefix('candidates')->group(function () {
         Route::get('/', 'index')->middleware(['abilities:list_usuario']);
         Route::get('/list_candidates', 'listCandidates')->middleware(['abilities:list_usuario']);
+        Route::get('/{id}', 'show')->middleware(['abilities:list_usuario']);
+        Route::post('/', 'beforeStore')->middleware(['abilities:cad_usuario']);
+        Route::put('/{id}', 'beforeUpdate')->middleware(['abilities:cad_usuario']);
+        Route::delete('/{id}', 'destroy')->middleware(['abilities:del_usuario']);
+        Route::put('/restore/{id}', 'restore')->middleware(['abilities:del_usuario']);
+    });
+    /*
+    |--------------------------------------------------------------------------
+    | Registration Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::controller(RegistrationController::class)->prefix('registrations')->group(function () {
+        Route::get('/', 'index')->middleware(['abilities:list_usuario']);
+        Route::get('/list_registrations', 'listRegistrations')->middleware(['abilities:list_usuario']);
+        Route::get('/{id}', 'show')->middleware(['abilities:list_usuario']);
+        Route::post('/', 'beforeStore')->middleware(['abilities:cad_usuario']);
+        Route::put('/{id}', 'beforeUpdate')->middleware(['abilities:cad_usuario']);
+        Route::delete('/{id}', 'destroy')->middleware(['abilities:del_usuario']);
+        Route::put('/restore/{id}', 'restore')->middleware(['abilities:del_usuario']);
+    });
+    /*
+    |--------------------------------------------------------------------------
+    | Vote Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::controller(VoteController::class)->prefix('votes')->group(function () {
+        Route::get('/', 'index')->middleware(['abilities:list_usuario']);
+        Route::get('/list_votes', 'listVotes')->middleware(['abilities:list_usuario']);
         Route::get('/{id}', 'show')->middleware(['abilities:list_usuario']);
         Route::post('/', 'beforeStore')->middleware(['abilities:cad_usuario']);
         Route::put('/{id}', 'beforeUpdate')->middleware(['abilities:cad_usuario']);
